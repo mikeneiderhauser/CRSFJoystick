@@ -11,6 +11,19 @@ Shout out to RealRobots.net for the Gamepad Library
 
 https://gitlab.com/realrobots/PicoGamepad/-/tree/master
 
+# Usage
+Tested with arduino-1.8.19.
+
+Go to Boards manager and install 'Arduino Mbed OS RP2040 Boards' package.  I'm using version 2.6.1 currently.
+
+Update the arduino ide preferences to point to the Sketchbook folder contained by this repo.  Libraries and examples are already included.
+
+Compile and upload. 
+
+On first upload to the pico, you will need to hold in the bootsel buttion before plugging it into the computer.  This should only have to be done once and subsequent uppdates can be done automatically by the ide.
+
+Once uploaded, the device should be recgonzed by your computer as a HID Joystick.
+
 # Mappings
 This was a quick map and is not fully featured.
 
@@ -45,6 +58,23 @@ On link up/down the onboard Pi Pico LED will light indicating connection
 | Level Shifter (what I had on hand) | https://www.adafruit.com/product/757 | $4 |
 
 Approx part cost $22
+
+# Wiring
+TODO
+
+Should be self explanitory, but using GPIO 4/5 (physical pin 6/7) on the pi pico for UART to ELRS RX.  UART from pi pico is fed through a level converter to the ELRS RX.
+
+Most other wiring is for HV (5V) and LV (3V) and GND pins.
+
+# Future Plans
+
+- Convert from Arduino IDE to platform.io
+- Add failsave nopulses / hold
+- design hardware carrier board
+- design enclosure
+- use Tiny 2040 instead of full pi pico
+- TBD other features
+
 
 # Prototype Photos
 
