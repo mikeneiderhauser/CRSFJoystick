@@ -77,6 +77,8 @@ Most other wiring is for HV (5V) and LV (3V) and GND pins.
 - use Tiny 2040 instead of full pi pico
 - TBD other features
 
+# Demo Video
+[![ELRS HID Joystick Demo](https://img.youtube.com/vi/MCOWKvFTHRc/0.jpg)](https://www.youtube.com/watch?v=MCOWKvFTHRc)
 
 # Prototype Photos
 
