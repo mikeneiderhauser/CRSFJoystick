@@ -57,10 +57,45 @@ On link up/down the onboard Pi Pico LED will light indicating connection
 | Pi Pico | https://www.pishop.us/product/raspberry-pi-pico/ | $4 |
 | Tiny 2040 (alt part) | https://www.pishop.us/product/tiny-2040/ | $10 |
 | ELRS RX (any will do) |  https://www.racedayquads.com/products/happymodel-2-4ghz-ep1-rx-express-lrs-receiver?_pos=1&_sid=c7214d987&_ss=r | $13.50 |
+| Level Shifter (Used for prototype boards) | https://www.amazon.com/dp/B07F7W91LC?psc=1&ref=ppx_yo2_dt_b_product_details | 10 for $7.50 ($0.75 ea) |
 | Level Shifter (what I had on hand) | https://www.adafruit.com/product/757 | $4 |
-| Level Shifter (alt part) | https://www.aliexpress.com/item/1972789887.html?spm=a2g0o.productlist.0.0.5c50769dtUDJLs&algo_pvid=ac5a3bf0-d505-4a7b-ad5d-90b0f2860eaf&algo_exp_id=ac5a3bf0-d505-4a7b-ad5d-90b0f2860eaf-0&pdp_ext_f=%7B%22sku_id%22%3A%2212000022963323570%22%7D&pdp_pi=-1%3B1.5%3B-1%3B-1%40salePrice%3BUSD%3Bsearch-mainSearch| 10 for $3 |
 
-Approx part cost $22
+Approx part cost for pico hardware (large footprint, cheaper) - $19.25
+
+- Pi Pico - $4.00
+- ELRS RX - $13.50 
+- Level Shifter - $0.75
+- Carrier Board - $1.00 (approx)
+
+Approx part cost for tiny2040 hardware (much smaller footprint) - $25.25
+
+- Tiny2040 - $10.00
+- ELRS RX - $13.50 
+- Level Shifter - $0.75
+- Carrier Board - $1.00 (approx)
+
+
+# Prototype Carrier Boards
+
+Both flavors of boards are currently on order for prototype.
+
+Hardware build files are located in hardware/kicad/CRSFJoystick/output/Rev1.0
+
+I used JLCPCB with Black Soldermask and a board thickness of 1.6mm.
+
+## Tiny2040
+![Tiny2040 Dimensions](./photos/tiny/board_kicad_dimensions.png)
+
+![Tiny2040 Front](./photos/tiny/board_render_front.png)
+
+![Tiny2040 Back](./photos/tiny/board_render_back.png)
+
+## Raspberry Pi Pico
+![Pi Pico Dimensions](./photos/pico/board_kicad_dimensions.png)
+
+![Pi Pico Front](./photos/pico/board_render_front.png)
+
+![Pi Pico Back](./photos/pico/board_render_back.png)
 
 # Wiring
 
@@ -72,9 +107,9 @@ Most other wiring is for HV (5V) and LV (3V) and GND pins.
 
 - Convert from Arduino IDE to platform.io
 - Add failsafe nopulses / hold
-- design hardware carrier board
+- design hardware carrier board (prototypes ordered)
 - design enclosure
-- use Tiny 2040 instead of full pi pico
+- use Tiny 2040 instead of full pi pico (prototypes ordered)
 - TBD other features
 
 # Demo Video
