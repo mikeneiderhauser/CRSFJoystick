@@ -60,22 +60,24 @@ On link up/down the onboard Pi Pico LED will light indicating connection
 | Level Shifter (Used for prototype boards) | https://www.amazon.com/dp/B07F7W91LC?psc=1&ref=ppx_yo2_dt_b_product_details | 10 for $7.50 ($0.75 ea) |
 | Level Shifter (what I had on hand) | https://www.adafruit.com/product/757 | $4 |
 
-Approx part cost for pico hardware (large footprint, cheaper) - $19.25
+Approx part cost for pico hardware (large footprint, cheaper) - $20-$25
 
 - Pi Pico - $4.00
 - ELRS RX - $13.50 
 - Level Shifter - $0.75
 - Carrier Board - $1.00 (approx)
+- Shipping / Tax from vendors - varies
 
-Approx part cost for tiny2040 hardware (much smaller footprint) - $25.25
+Approx part cost for tiny2040 hardware (much smaller footprint) - $25-$30
 
 - Tiny2040 - $10.00
 - ELRS RX - $13.50 
 - Level Shifter - $0.75
 - Carrier Board - $1.00 (approx)
+- Shipping / Tax from vendors - varies
 
 
-# Prototype Carrier Boards
+# Carrier Boards (Tiny Version)
 
 Both flavors of boards are currently on order for prototype.
 
@@ -83,19 +85,26 @@ Hardware build files are located in hardware/kicad/CRSFJoystick/output/Rev1.0
 
 I used JLCPCB with Black Soldermask and a board thickness of 1.6mm.
 
+![R1.0 Build Photo](./photos/r1.0_build.jpeg)
+
+Note the different orientation of the ELRS RX's.  The orientation can be flipped.  I installed each RX to ensure the boot pad is exposed should the RX need recovered.
+
 ## Tiny2040
+
+![Tiny2040 Build Front](./photos/tiny/board_r1.0_front.jpeg)
+
+![Tiny2040 Build Back](./photos/tiny/board_r1.0_back.jpeg)
+
 ![Tiny2040 Dimensions](./photos/tiny/board_kicad_dimensions.png)
 
-![Tiny2040 Front](./photos/tiny/board_render_front.png)
 
-![Tiny2040 Back](./photos/tiny/board_render_back.png)
+## Raspberry Pi Pico (Full Version)
 
-## Raspberry Pi Pico
+![Pico Build Front](./photos/pico/board_r1.0_front.jpeg)
+
+![Pico Build Back](./photos/pcio/board_r1.0_back.jpeg)
+
 ![Pi Pico Dimensions](./photos/pico/board_kicad_dimensions.png)
-
-![Pi Pico Front](./photos/pico/board_render_front.png)
-
-![Pi Pico Back](./photos/pico/board_render_back.png)
 
 # Wiring
 
@@ -109,12 +118,7 @@ Most other wiring is for HV (5V) and LV (3V) and GND pins.
 - Add failsafe nopulses / hold
 - design hardware carrier board (prototypes ordered)
 - design enclosure
-- use Tiny 2040 instead of full pi pico (prototypes ordered)
 - TBD other features
 
 # Demo Video
 [![ELRS HID Joystick Demo](https://img.youtube.com/vi/MCOWKvFTHRc/0.jpg)](https://www.youtube.com/watch?v=MCOWKvFTHRc)
-
-# Prototype Photos
-
-![proto pic](./photos/proto_breadboard2.jpg)
