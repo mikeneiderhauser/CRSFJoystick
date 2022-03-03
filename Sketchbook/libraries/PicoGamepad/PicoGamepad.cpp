@@ -232,6 +232,12 @@ void PicoGamepad::SetThrottle(uint16_t val)
 
 void PicoGamepad::SetS0(uint16_t val)
 {
+    inputArray[THROTTLE_AXIS_LSB] = LSB(val);
+    inputArray[THROTTLE_AXIS_MSB] = MSB(val);
+}
+
+void PicoGamepad::SetS1(uint16_t val)
+{
     inputArray[S0_AXIS_LSB] = LSB(val);
     inputArray[S0_AXIS_MSB] = MSB(val);
 }
