@@ -77,7 +77,6 @@ Approx part cost for tiny2040 hardware (much smaller footprint) - $25-$30
 - Carrier Board - $1.00 (approx)
 - Shipping / Tax from vendors - varies
 
-
 # Carrier Boards (Tiny Version)
 
 Hardware build files are located in hardware/kicad/CRSFJoystick/output/Rev1.0
@@ -90,6 +89,8 @@ Note the different orientation of the ELRS RX's.  The orientation can be flipped
 
 ## Tiny2040
 
+![Tiny2040 Level shifter orientation](./photos/tiny/2040_level_shifter.jpg)
+
 ![Tiny2040 Build Front](./photos/tiny/board_r1.0_front.jpeg)
 
 ![Tiny2040 Build Back](./photos/tiny/board_r1.0_back.jpeg)
@@ -99,6 +100,8 @@ Note the different orientation of the ELRS RX's.  The orientation can be flipped
 
 ## Raspberry Pi Pico (Full Version)
 
+![Pico level shifter orientation](./photos/pico/Pico_level_shifter.jpg)
+
 ![Pico Build Front](./photos/pico/board_r1.0_front.jpeg)
 
 ![Pico Build Back](./photos/pico/board_r1.0_back.jpeg)
@@ -106,11 +109,16 @@ Note the different orientation of the ELRS RX's.  The orientation can be flipped
 ![Pi Pico Dimensions](./photos/pico/board_kicad_dimensions.png)
 
 
+# General Assembly
+
+- Print the top and bottom enclosure
+- Print 2 of the spacers for the Pi2040, Print 4 of the spacers for the Pi Pico version
+- Follow the directions in this video https://youtu.be/Zuhfbobgm5A
+
 # Future Plans
 
 - Convert from Arduino IDE to platform.io
 - Add failsafe nopulses / hold
-- design enclosure
 - TBD other features
 
 # Demo Video
