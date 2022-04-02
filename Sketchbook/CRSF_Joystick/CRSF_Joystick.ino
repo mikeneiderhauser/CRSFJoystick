@@ -4,6 +4,7 @@
 #include "calibration.h"
 
 UART Serial2(4, 5, NC, NC);  // GPIO 4/5, physical pin 6/7
+//UART Serial2(0, 1, NC, NC);  // SEEED XIAO RP2040 board 
 
 CrsfSerial crsf(Serial2, CRSF_BAUDRATE); // pass any HardwareSerial port
 int channel_data = 0;
@@ -131,7 +132,7 @@ void packetChannels()
     // Set hat direction, 4 hats available. direction is clockwise 0=N 1=NE 2=E 3=SE 4=S 5=SW 6=W 7=NW 8=CENTER 
     // gamepad.SetHat(0, 8);
 
-    gamepad.send_update();   
+    gamepad.send_update();
 }
 
 void crsfLinkUp() {
@@ -147,6 +148,7 @@ void setup()
     Serial.begin(115200);
     pinMode(LED_BUILTIN, OUTPUT);
 
+    gamepad.send_update();
     // If something other than changing the baud of the UART needs to be done, do it here
     // Serial1.end(); Serial1.begin(500000, SERIAL_8N1, 16, 17);
 
