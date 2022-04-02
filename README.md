@@ -11,6 +11,31 @@ Shout out to RealRobots.net for the Gamepad Library
 
 https://gitlab.com/realrobots/PicoGamepad/-/tree/master
 
+## Purchase
+
+Hand built boards can be purchased from my page on FPVExchange
+
+- [HouseFPV on FPVExchange](https://fpvexchange.com/user/HouseFPV)
+- [Pi Pico Version](https://fpvexchange.com/bucket/elrs-usb-joystick-adapter-full-version-shipped?item=79bf6b52-0174-4896-9d9c-cdbf47ecb8dd) - Built to Order
+- [Tiny2040 Version](https://fpvexchange.com/bucket/elrs-usb-joystick-adapter-tiny-version-shipped?item=77c63fc5-9c1e-441b-a208-b0c28b785677) - Built to Order
+- WaveShare RP2040-Zero Version - Coming Soon!
+- SEEED AXIO RP2040 Version - Coming Soon!
+- BYORx Version - Coming Soon!
+
+## Compatability
+
+This project was designed primarily with ELRS usage in mind, however this code base has also been tested with TBS Crossfire Receivers (915MHZ) (last tested v6.16) and TBS Tracer Receivers (2.4GHz) (last tested v6.17) and both appear to work! Flight was teseted in the Liftoff simulator.
+
+I no longer have TBS Crossfire nor TBS Tracer TX modules or Receivers so future tests will have to be conducted by others.
+
+### Crossfire
+
+![Crossfire](./photos/tbs/crossfire_dev_board.jpeg)
+
+### Tracer
+
+![Tracer](./photos/tbs/tracer_dev_board.jpeg)
+
 # Usage
 Tested with arduino-1.8.19.
 
@@ -108,6 +133,18 @@ Note the different orientation of the ELRS RX's.  The orientation can be flipped
 
 ![Pi Pico Dimensions](./photos/pico/board_kicad_dimensions.png)
 
+## SEEED AXIO 2040
+
+Coming soon!
+
+[SEEED XAIO RP2040 Board](https://www.seeedstudio.com/XIAO-RP2040-v1-0-p-5026.html)
+
+## Waveshare RP2040-Zero
+
+Coming soon!
+
+[WaveShare RP2040-Zero Board](https://www.waveshare.com/rp2040-zero.htm)
+
 
 # General Assembly
 
@@ -119,7 +156,11 @@ Note the different orientation of the ELRS RX's.  The orientation can be flipped
 
 - Convert from Arduino IDE to platform.io
 - Add failsafe nopulses / hold
-- TBD other features
+- Add carrier board for [SEEED XAIO RP2040 Board](https://www.seeedstudio.com/XIAO-RP2040-v1-0-p-5026.html)
+- Add cases for SEEED XAIO RP2040 Board
+- Add carrier board for [WaveShare RP2040-Zero Board](https://www.waveshare.com/rp2040-zero.htm)
+- Add cases for Waveshare RP2040-Zero Board
+- FPVExchange Links for BYORx versions
 
 # Demo Video
 [![ELRS HID Joystick Demo](https://img.youtube.com/vi/MCOWKvFTHRc/0.jpg)](https://www.youtube.com/watch?v=MCOWKvFTHRc)
