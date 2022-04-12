@@ -3,8 +3,15 @@
 
 #include "calibration.h"
 
-UART Serial2(4, 5, NC, NC);  // GPIO 4/5, physical pin 6/7
-//UART Serial2(0, 1, NC, NC);  // SEEED XIAO RP2040 board 
+// ONLY UNCOMMENT 1 Board ID
+#define BOARD_ID 1  // PiPico
+//#define BOARD_ID 2  // TINY2040
+//#define BOARD_ID 3  // WaveShare RP2040-Zero
+//#define BOARD_ID 4  // Seeed XAIO 2040
+
+#include "board_defs.h"
+
+UART Serial2(CRSF_TX, CRSF_RX, NC, NC);
 
 CrsfSerial crsf(Serial2, CRSF_BAUDRATE); // pass any HardwareSerial port
 int channel_data = 0;
@@ -136,22 +143,23 @@ void packetChannels()
 }
 
 void crsfLinkUp() {
-  digitalWrite(LED_BUILTIN, HIGH);
+  led_on();
 }
 
 void crsfLinkDown() {
-  digitalWrite(LED_BUILTIN, LOW);
+  led_off();
 }
 
 void setup()
 {
     Serial.begin(115200);
-    pinMode(LED_BUILTIN, OUTPUT);
+    boardSetup();
+    led_off();
 
     gamepad.send_update();
     // If something other than changing the baud of the UART needs to be done, do it here
     // Serial1.end(); Serial1.begin(500000, SERIAL_8N1, 16, 17);
-
+""
     // Attach the channels callback
     crsf.onPacketChannels = &packetChannels;
     crsf.onLinkUp = &crsfLinkUp;
