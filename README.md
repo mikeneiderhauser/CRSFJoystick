@@ -141,7 +141,9 @@ Coming soon!
 
 ## Waveshare RP2040-Zero
 
-Coming soon!
+First batch on order!
+
+![WaveShare RP2040-Zero BoardDimensions](./photos/waveshare/board_kicad_dimensions.png)
 
 [WaveShare RP2040-Zero Board](https://www.waveshare.com/rp2040-zero.htm)
 
