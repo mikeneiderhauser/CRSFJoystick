@@ -135,7 +135,9 @@ Note the different orientation of the ELRS RX's.  The orientation can be flipped
 
 ## SEEED AXIO 2040
 
-Coming soon!
+Board files now in the hardware folder.  Not built or tested but should work.
+
+![SEEED XAIO RP2040 Dimensions](./photos/xiao/board_kicad_dimensions.png)
 
 [SEEED XAIO RP2040 Board](https://www.seeedstudio.com/XIAO-RP2040-v1-0-p-5026.html)
 
@@ -158,9 +160,7 @@ First batch on order!
 
 - Convert from Arduino IDE to platform.io
 - Add failsafe nopulses / hold
-- Add carrier board for [SEEED XAIO RP2040 Board](https://www.seeedstudio.com/XIAO-RP2040-v1-0-p-5026.html)
 - Add cases for SEEED XAIO RP2040 Board
-- Add carrier board for [WaveShare RP2040-Zero Board](https://www.waveshare.com/rp2040-zero.htm)
 - Add cases for Waveshare RP2040-Zero Board
 - FPVExchange Links for BYORx versions
 
