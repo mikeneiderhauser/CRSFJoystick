@@ -149,6 +149,11 @@ First batch on order!
 
 [WaveShare RP2040-Zero Board](https://www.waveshare.com/rp2040-zero.htm)
 
+[WaveShare RP2040 Case lower](./photos/waveshare/WS2040_lower.jpg)
+
+[WaveShare RP2040 Case assembled](./photos/waveshare/WS2040_case.jpg)
+
+
 
 # General Assembly
 
