@@ -4,9 +4,9 @@
 #include "calibration.h"
 
 // ONLY UNCOMMENT 1 Board ID
-#define BOARD_ID 1  // PiPico
+//#define BOARD_ID 1  // PiPico
 //#define BOARD_ID 2  // TINY2040
-//#define BOARD_ID 3  // WaveShare RP2040-Zero
+#define BOARD_ID 3  // WaveShare RP2040-Zero
 //#define BOARD_ID 4  // Seeed XAIO 2040
 
 #include "board_defs.h"
@@ -159,7 +159,7 @@ void setup()
     gamepad.send_update();
     // If something other than changing the baud of the UART needs to be done, do it here
     // Serial1.end(); Serial1.begin(500000, SERIAL_8N1, 16, 17);
-""
+
     // Attach the channels callback
     crsf.onPacketChannels = &packetChannels;
     crsf.onLinkUp = &crsfLinkUp;
