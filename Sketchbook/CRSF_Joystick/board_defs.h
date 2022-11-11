@@ -126,4 +126,25 @@
     
 #endif
 
+// Pro Micro
+#if BOARD_ID == 5
+    #define CRSF_TX 21  // physical 6
+    #define CRSF_RX 20  // physical 7
+
+    #define LED_TYPE LED_TYPE_SINGLE
+    #define LED_PIN 17
+    
+    void boardSetup() {
+      pinMode(LED_PIN,OUTPUT);
+    }
+
+    void led_off() {
+      digitalWrite(LED_PIN, LOW);
+    }
+    
+    void led_on() {
+      digitalWrite(LED_PIN, HIGH);
+    }
+#endif
+
 #endif
