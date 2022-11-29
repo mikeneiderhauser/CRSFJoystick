@@ -1,7 +1,6 @@
 #pragma once
 
 #include <Arduino.h>
-#include <functional>
 #include <crc8.h>
 #include "crsf_protocol.h"
 
@@ -23,16 +22,18 @@ public:
     // Return current channel value (1-based) in us
     int getChannel(unsigned int ch) const { return _channels[ch - 1]; }
     const crsfLinkStatistics_t *getLinkStatistics() const { return &_linkStatistics; }
+    const crsf_sensor_gps_t *getGpsSensor() const { return &_gpsSensor; }
     bool isLinkUp() const { return _linkIsUp; }
     bool getPassthroughMode() const { return _passthroughMode; }
     void setPassthroughMode(bool val, unsigned int baud = 0);
 
     // Event Handlers
-    std::function<void()> onLinkUp;
-    std::function<void()> onLinkDown;
-    std::function<void(uint8_t)> onShiftyByte;
-    std::function<void()> onPacketChannels;
-    std::function<void(crsfLinkStatistics_t *)> onPacketLinkStatistics;
+    void (*onLinkUp)();
+    void (*onLinkDown)();
+    void (*onPacketChannels)();
+    void (*onShiftyByte)(uint8_t b);
+    void (*onPacketLinkStatistics)(crsfLinkStatistics_t *ls);
+    void (*onPacketGps)(crsf_sensor_gps_t *gpsSensor);
 
 private:
     HardwareSerial &_port;
@@ -40,6 +41,8 @@ private:
     uint8_t _rxBufPos;
     Crc8 _crc;
     crsfLinkStatistics_t _linkStatistics;
+    crsf_sensor_gps_t _gpsSensor;
+    uint32_t _baud;
     uint32_t _lastReceive;
     uint32_t _lastChannelsPacket;
     bool _linkIsUp;
@@ -56,4 +59,5 @@ private:
     // Packet Handlers
     void packetChannelsPacked(const crsf_header_t *p);
     void packetLinkStatistics(const crsf_header_t *p);
+    void packetGps(const crsf_header_t *p);
 };

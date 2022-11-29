@@ -37,82 +37,82 @@
 // upper bound and lower bound constrain where button reports HIGH and is inclusive
 // Typically use MID / HIGH
 typedef struct btn_config {
-    byte channel;
-    byte id;
-    int lower_bound;
-    int upper_bound;
-    bool invert;
+  byte channel;
+  byte id;
+  int lower_bound;
+  int upper_bound;
+  bool invert;
 } btn_config;
 
 #define NUM_BUTTONS 8
 btn_config btn_map[NUM_BUTTONS] = {
-    {
+  {
     5,                    // channel
     0,                    // id
     CHANNEL_AUX_SW_MID,   // lower bound
     CHANNEL_AUX_SW_HIGH,  // upper bound
     false                 // invert
-    },
+  },
 
-    {
+  {
     6,                    // channel
     1,                    // id
     CHANNEL_AUX_SW_MID,   // lower bound
     CHANNEL_AUX_SW_HIGH,  // upper bound
     false                 // invert
-    },
+  },
 
-    {
+  {
     7,                    // channel
     2,                    // id
     CHANNEL_AUX_SW_MID,   // lower bound
     CHANNEL_AUX_SW_HIGH,  // upper bound
     false                 // invert
-    },
+  },
 
-    {
+  {
     8,                    // channel
     3,                    // id
     CHANNEL_AUX_SW_MID,   // lower bound
     CHANNEL_AUX_SW_HIGH,  // upper bound
     false                 // invert
-    },
+  },
 
-    {
+  {
     9,                    // channel
     4,                    // id
     CHANNEL_AUX_SW_MID,   // lower bound
     CHANNEL_AUX_SW_HIGH,  // upper bound
     false                 // invert
-    },
+  },
 
-    {
-    10,                    // channel
+  {
+    10,                   // channel
     5,                    // id
     CHANNEL_AUX_SW_MID,   // lower bound
     CHANNEL_AUX_SW_HIGH,  // upper bound
     false                 // invert
-    },
+  },
 
-    {
-    11,                    // channel
+  {
+    11,                   // channel
     6,                    // id
     CHANNEL_AUX_SW_MID,   // lower bound
     CHANNEL_AUX_SW_HIGH,  // upper bound
     false                 // invert
-    },
+  },
 
-    {
-    12,                    // channel
+  {
+    12,                   // channel
     7,                    // id
     CHANNEL_AUX_SW_MID,   // lower bound
     CHANNEL_AUX_SW_HIGH,  // upper bound
     true                  // invert  - EX FOR INVERT
-    }
+  }
 };
 
 // Channel1 - A
-// Channel2 - E 
+// Channel2 - E
 // Channel3 - T
 // Channel4 - R
 // Channel5 - Aux 1
