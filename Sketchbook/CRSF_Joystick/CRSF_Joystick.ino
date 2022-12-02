@@ -91,7 +91,7 @@ void packetChannels()
       CHANNEL_7_HIGH_EP,         \
       JOYSTICK_LOW,              \
       JOYSTICK_HIGH);
-    gamepad.SetS0(map_data);
+    gamepad.SetThrottle(map_data);
 
     // Rx - Channel 8
     channel_data = crsf.getChannel(8);
@@ -100,7 +100,7 @@ void packetChannels()
       CHANNEL_8_HIGH_EP,         \
       JOYSTICK_LOW,              \
       JOYSTICK_HIGH);
-    gamepad.SetS1(map_data);
+    gamepad.SetS0(map_data);
 
     // Ry - unused
     // gamepad.SetRy(map_data);
@@ -108,8 +108,6 @@ void packetChannels()
     // gamepad.SetRz(map_data);
     // S0 - unused
     // gamepad.SetS0(map_data);
-    // S1 - unused
-    // gamepad.SetS1(map_data);
 
     // Multi-position switches can be set up in calibrations.h
     // The button will report HIGH when the channel is withing
