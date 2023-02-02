@@ -160,13 +160,13 @@ First batch on order!
 
 Build a smaller pico by yourself.
 
-![CRSFJoystick2.0 Board Front](./photos/crsfjoystick2.0/board_v2.2_front.JPG)
+![CRSFJoystick2.3 Board Front](./photos/crsfjoystick2.0/board_v2.3_front.JPG)
 
-![CRSFJoystick2.0 Board Back](./photos/crsfjoystick2.0/board_v2.2_back.JPG)
+![CRSFJoystick2.3 Board Back](./photos/crsfjoystick2.0/board_v2.3_back.JPG)
 
-![CRSFJoystick2.0 Render Front](./photos/crsfjoystick2.0/board_render_front.png)
+![CRSFJoystick2.3 Render Front](./photos/crsfjoystick2.0/board_v2.3_render_front.png)
 
-![CRSFJoystick2.0 Render Back](./photos/crsfjoystick2.0/board_render_back.png)
+![CRSFJoystick2.3 Render Back](./photos/crsfjoystick2.0/board_v2.3_render_back.png)
 
 # General Assembly
 
