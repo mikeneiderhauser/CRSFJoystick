@@ -156,6 +156,17 @@ First batch on order!
 ![WaveShare RP2040 Case assembled](./photos/waveshare/WS2040_case.jpg)
 
 
+## CRSFJoystick2.0
+
+Build a smaller pico by yourself.
+
+![CRSFJoystick2.3 Board Front](./photos/crsfjoystick2.0/board_v2.3_front.JPG)
+
+![CRSFJoystick2.3 Board Back](./photos/crsfjoystick2.0/board_v2.3_back.JPG)
+
+![CRSFJoystick2.3 Render Front](./photos/crsfjoystick2.0/board_v2.3_render_front.png)
+
+![CRSFJoystick2.3 Render Back](./photos/crsfjoystick2.0/board_v2.3_render_back.png)
 
 # General Assembly
 
