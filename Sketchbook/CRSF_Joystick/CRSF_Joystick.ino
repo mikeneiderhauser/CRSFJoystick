@@ -8,7 +8,7 @@
 // TINY2040 -------------- 2
 // WaveShare RP2040-Zero - 3
 // Seeed XAIO 2040 ------- 4
-#define BOARD_ID 3
+#define BOARD_ID 1
 
 #include "board_defs.h"
 
