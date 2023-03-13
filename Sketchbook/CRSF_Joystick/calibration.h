@@ -44,10 +44,11 @@ typedef struct btn_config {
     bool invert;
 } btn_config;
 
-#define NUM_BUTTONS 8
+#define NUM_BUTTONS 4
 btn_config btn_map[NUM_BUTTONS] = {
+    // channel 1-8 are defined in 'CRSF_Joytick.ino' file, so here channel begins with 9.
     {
-    5,                    // channel
+    9,                    // channel
     0,                    // id
     CHANNEL_AUX_SW_MID,   // lower bound
     CHANNEL_AUX_SW_HIGH,  // upper bound
@@ -55,7 +56,7 @@ btn_config btn_map[NUM_BUTTONS] = {
     },
 
     {
-    6,                    // channel
+    10,                   // channel
     1,                    // id
     CHANNEL_AUX_SW_MID,   // lower bound
     CHANNEL_AUX_SW_HIGH,  // upper bound
@@ -63,7 +64,7 @@ btn_config btn_map[NUM_BUTTONS] = {
     },
 
     {
-    7,                    // channel
+    11,                   // channel
     2,                    // id
     CHANNEL_AUX_SW_MID,   // lower bound
     CHANNEL_AUX_SW_HIGH,  // upper bound
@@ -71,43 +72,11 @@ btn_config btn_map[NUM_BUTTONS] = {
     },
 
     {
-    8,                    // channel
+    12,                   // channel
     3,                    // id
     CHANNEL_AUX_SW_MID,   // lower bound
     CHANNEL_AUX_SW_HIGH,  // upper bound
     false                 // invert
-    },
-
-    {
-    9,                    // channel
-    4,                    // id
-    CHANNEL_AUX_SW_MID,   // lower bound
-    CHANNEL_AUX_SW_HIGH,  // upper bound
-    false                 // invert
-    },
-
-    {
-    10,                    // channel
-    5,                    // id
-    CHANNEL_AUX_SW_MID,   // lower bound
-    CHANNEL_AUX_SW_HIGH,  // upper bound
-    false                 // invert
-    },
-
-    {
-    11,                    // channel
-    6,                    // id
-    CHANNEL_AUX_SW_MID,   // lower bound
-    CHANNEL_AUX_SW_HIGH,  // upper bound
-    false                 // invert
-    },
-
-    {
-    12,                    // channel
-    7,                    // id
-    CHANNEL_AUX_SW_MID,   // lower bound
-    CHANNEL_AUX_SW_HIGH,  // upper bound
-    true                  // invert  - EX FOR INVERT
     }
 };
 

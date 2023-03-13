@@ -4,10 +4,11 @@
 #include "calibration.h"
 
 // ONLY UNCOMMENT 1 Board ID
-//#define BOARD_ID 1  // PiPico
-//#define BOARD_ID 2  // TINY2040
-#define BOARD_ID 3  // WaveShare RP2040-Zero
-//#define BOARD_ID 4  // Seeed XAIO 2040
+// PiPico ---------------- 1
+// TINY2040 -------------- 2
+// WaveShare RP2040-Zero - 3
+// Seeed XAIO 2040 ------- 4
+#define BOARD_ID 3
 
 #include "board_defs.h"
 
@@ -30,7 +31,7 @@ void packetChannels()
 {
     // Manually expanding instead of looping so I can change params as needed
     
-    // X - Channel 1 - A
+    // A - Channel 1 - X
     channel_data = crsf.getChannel(1);
     map_data = map(channel_data, \
       CHANNEL_1_LOW_EP,          \
@@ -39,7 +40,7 @@ void packetChannels()
       JOYSTICK_HIGH);
     gamepad.SetX(map_data);
     
-    // Y - Channel 2 - E
+    // E - Channel 2 - Y
     channel_data = crsf.getChannel(2);
     map_data = map(channel_data, \
       CHANNEL_2_LOW_EP,          \
@@ -48,34 +49,34 @@ void packetChannels()
       JOYSTICK_HIGH);
     gamepad.SetY(map_data);
     
-    // Rx - Channel 3 - T
+    // T - Channel 3 - Z
     channel_data = crsf.getChannel(3);
     map_data = map(channel_data, \
       CHANNEL_3_LOW_EP,          \
       CHANNEL_3_HIGH_EP,         \
       JOYSTICK_LOW,              \
       JOYSTICK_HIGH);
-    gamepad.SetRx(map_data);
+    gamepad.SetZ(map_data);
     
-    // Ry - Channel 4 - R
+    // R - Channel 4 - Rx
     channel_data = crsf.getChannel(4);
     map_data = map(channel_data, \
       CHANNEL_4_LOW_EP,          \
       CHANNEL_4_HIGH_EP,         \
       JOYSTICK_LOW,              \
       JOYSTICK_HIGH);
-    gamepad.SetRy(map_data);
+    gamepad.SetRx(map_data);
 
-    // Z - Channel 5
+    // AUX1 - Channel 5 - Ry
     channel_data = crsf.getChannel(5);
     map_data = map(channel_data, \
       CHANNEL_5_LOW_EP,          \
       CHANNEL_5_HIGH_EP,         \
       JOYSTICK_LOW,              \
       JOYSTICK_HIGH);
-    gamepad.SetZ(map_data);
+    gamepad.SetRy(map_data);
 
-    // Rz - Channel 6
+    // AUX2 - Channel 6 - Rz
     channel_data = crsf.getChannel(6);
     map_data = map(channel_data, \
       CHANNEL_6_LOW_EP,          \
@@ -84,7 +85,7 @@ void packetChannels()
       JOYSTICK_HIGH);
     gamepad.SetRz(map_data);
     
-    // Rx - Channel 7
+    // AUX3 - Channel 7 - Throttle
     channel_data = crsf.getChannel(7);
     map_data = map(channel_data, \
       CHANNEL_7_LOW_EP,          \
@@ -93,7 +94,7 @@ void packetChannels()
       JOYSTICK_HIGH);
     gamepad.SetThrottle(map_data);
 
-    // Rx - Channel 8
+    // AUX4 - Channel 8 - S0
     channel_data = crsf.getChannel(8);
     map_data = map(channel_data, \
       CHANNEL_8_LOW_EP,          \
@@ -101,13 +102,6 @@ void packetChannels()
       JOYSTICK_LOW,              \
       JOYSTICK_HIGH);
     gamepad.SetS0(map_data);
-
-    // Ry - unused
-    // gamepad.SetRy(map_data);
-    // Rz - unused
-    // gamepad.SetRz(map_data);
-    // S0 - unused
-    // gamepad.SetS0(map_data);
 
     // Multi-position switches can be set up in calibrations.h
     // The button will report HIGH when the channel is withing
@@ -145,7 +139,15 @@ void crsfLinkUp() {
 }
 
 void crsfLinkDown() {
+  //led_off();
+  led_blink();
+}
+
+void led_blink() {
+  led_on();
+  delay(500);
   led_off();
+  delay(500);
 }
 
 void setup()
@@ -168,4 +170,8 @@ void loop()
 {
     // Must call CrsfSerial.loop() in loop() to process data
     crsf.loop();
+
+    if (crsf.isLinkUp() == false) {
+      led_blink();
+    }
 }
