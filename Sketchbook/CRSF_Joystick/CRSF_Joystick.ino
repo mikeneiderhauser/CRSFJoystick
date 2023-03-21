@@ -144,17 +144,20 @@ void crsfLinkDown() {
 }
 
 void led_blink() {
-  led_on();
-  delay(500);
-  led_off();
-  delay(500);
+  for (int i = 0; i < 60; i++) {
+    led_on();
+    delay(500);
+    led_off();
+    delay(500);
+  }
 }
 
 void setup()
 {
     Serial.begin(115200);
     boardSetup();
-    led_off();
+    //led_off();
+    led_blink();
 
     gamepad.send_update();
     // If something other than changing the baud of the UART needs to be done, do it here
@@ -170,8 +173,4 @@ void loop()
 {
     // Must call CrsfSerial.loop() in loop() to process data
     crsf.loop();
-
-    if (crsf.isLinkUp() == false) {
-      led_blink();
-    }
 }
