@@ -60,16 +60,16 @@ On link up/down the onboard Pi Pico LED will light indicating connection.
 | ----------- | ---------------- | ---------------- |
 | 1           | A                | X                |
 | 2           | E                | Y                |
-| 3           | T                | Z               |
+| 3           | T                | Z                |
 | 4           | R                | Rx               |
-| 5           | Channel 5 (Full) AND AUX1 (1510-2011) | Ry |
-| 6           | Channel 6 (Full) AND AUX2 (1510-2011) | Rz |
-| 7           | Channel 7 (Full) AND AUX3 (1510-2011) | Throttle |
-| 8           | Channel 8 (Full) AND AUX4 (1510-2001) | S0 |
-| 9           | AUX5 (1510-2011) | Button 1         |
-| 10          | AUX6 (1510-2011) | Button 2         |
-| 11          | AUX7 (1510-2011) | Button 3         |
-| 12          | AUX8 (1510-2011) | Button 4         |
+| 5           | Channel 5 (Full) AND AUX1 (1510-2011) | Ry AND Button 0       |
+| 6           | Channel 6 (Full) AND AUX2 (1510-2011) | Rz AND Button 1       |
+| 7           | Channel 7 (Full) AND AUX3 (1510-2011) | Throttle AND Button 2 |
+| 8           | Channel 8 (Full) AND AUX4 (1510-2001) | S0 AND Button 3       |
+| 9           | AUX5 (1510-2011) | Button 4         |
+| 10          | AUX6 (1510-2011) | Button 5         |
+| 11          | AUX7 (1510-2011) | Button 6         |
+| 12          | AUX8 (1510-2011) | Button 7         |
 | 13          | Not Used         | Not Used         |
 | 14          | Not Used         | Not Used         |
 | 15          | LQ - Not Used    | Not Used         |
