@@ -10,6 +10,16 @@
 // Seeed XAIO 2040 ------- 4
 #define BOARD_ID 1
 
+// Blink routine variables and state tracking
+#define BLINK_ENABLED                    // comment this line out to disable led blink
+#define BLINK_TIME 60000                 // blink routine window (in ms)
+#define BLINK_DELAY 500                  // delay in between led state change (in ms)
+
+bool led_state = false;                  // track led on/off state
+unsigned long ms_curr = 0;               // current time
+unsigned long ms_last_link_changed = 0;  // last time crsf link changed
+unsigned long ms_last_led_changed = 0;   // last time led changed state in blink routine
+
 #include "board_defs.h"
 
 UART Serial2(CRSF_TX, CRSF_RX, NC, NC);
@@ -135,18 +145,47 @@ void packetChannels()
 }
 
 void crsfLinkUp() {
+  ms_last_link_changed = millis();
+  ms_last_led_changed = ms_last_link_changed;
+  led_state = true;
   led_on();
 }
 
 void crsfLinkDown() {
+  ms_last_link_changed = millis();
+  ms_last_led_changed = ms_last_link_changed;
+  led_state = false;
   led_off();
 }
+
+#ifdef BLINK_ENABLED
+void led_loop() {
+  ms_curr = millis();
+  // link is down
+  if(!crsf.isLinkUp()) {
+    // within the blink routine window (BLINK_TIME)
+    if(ms_curr < (ms_last_link_changed + BLINK_TIME)) {
+      // handle led toggle delay
+      if(ms_curr > (ms_last_led_changed + BLINK_DELAY)) {
+        ms_last_led_changed = ms_curr;
+        led_state ? led_on() : led_off();
+        led_state = !led_state;  // toggle led state
+      }
+    }
+    else
+    {
+      // ensure the led is off if the blink routine expired and link is down
+      led_off();
+    }
+  }
+}
+#endif
 
 void setup()
 {
     Serial.begin(115200);
     boardSetup();
-    led_off();
+    crsfLinkDown();
 
     gamepad.send_update();
     // If something other than changing the baud of the UART needs to be done, do it here
@@ -162,4 +201,7 @@ void loop()
 {
     // Must call CrsfSerial.loop() in loop() to process data
     crsf.loop();
+    #ifdef BLINK_ENABLED
+    led_loop();
+    #endif
 }
