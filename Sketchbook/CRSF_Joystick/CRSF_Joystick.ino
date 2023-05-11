@@ -183,7 +183,6 @@ static void passthroughBegin(uint32_t baud)
 
 static void crsfOobData(uint8_t b)
 {
-    // A shifty byte iscrsfOobData usually just log messages from ELRS
     Serial.write(b);
 }
 
@@ -245,7 +244,6 @@ static void checkSerialInNormal()
             if (serialInBuffLen != 0)
             {
                 Serial.write('\n');
-                // Serial.flush();
                 serialInBuff[serialInBuffLen] = '\0';
                 serialInBuffLen = 0;
 
@@ -270,7 +268,6 @@ static void checkSerialInPassthrough()
     static uint32_t lastData = 0;
     static bool LED = false;
     bool gotData = false;
-    // Simple data passthrough from in to crsf
     unsigned int avail;
     while ((avail = Serial.available()) != 0)
     {
