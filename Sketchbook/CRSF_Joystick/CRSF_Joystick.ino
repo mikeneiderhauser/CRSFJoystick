@@ -4,9 +4,9 @@
 #include "calibration.h"
 
 // ONLY UNCOMMENT 1 Board ID
-#define BOARD_ID 1  // PiPico
+//#define BOARD_ID 1  // PiPico
 //#define BOARD_ID 2  // TINY2040
-//#define BOARD_ID 3  // WaveShare RP2040-Zero
+#define BOARD_ID 3  // WaveShare RP2040-Zero
 //#define BOARD_ID 4  // Seeed XAIO 2040
 
 // Blink routine variables and state tracking
