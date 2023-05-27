@@ -6,13 +6,14 @@
 
 #define CRSF_BAUDRATE           420000
 #define CRSF_NUM_CHANNELS 16
-#define CRSF_CHANNEL_VALUE_MIN  172
+#define CRSF_CHANNEL_VALUE_MIN  172 // 987us - actual CRSF min is 0 with E.Limits on
 #define CRSF_CHANNEL_VALUE_1000 191
 #define CRSF_CHANNEL_VALUE_MID  992
 #define CRSF_CHANNEL_VALUE_2000 1792
-#define CRSF_CHANNEL_VALUE_MAX  1811
+#define CRSF_CHANNEL_VALUE_MAX  1811 // 2012us - actual CRSF max is 1984 with E.Limits on
 #define CRSF_CHANNEL_VALUE_SPAN (CRSF_CHANNEL_VALUE_MAX - CRSF_CHANNEL_VALUE_MIN)
-#define CRSF_MAX_PACKET_LEN 64
+#define CRSF_MAX_PACKET_SIZE 64 // max declared len is 62+DEST+LEN on top of that = 64
+#define CRSF_MAX_PAYLOAD_LEN (CRSF_MAX_PACKET_SIZE - 4) // Max size of payload in [dest] [len] [type] [payload] [crc8]
 
 // Clashes with CRSF_ADDRESS_FLIGHT_CONTROLLER
 #define CRSF_SYNC_BYTE 0XC8
@@ -119,10 +120,10 @@ typedef struct crsfPayloadLinkstatistics_s
 
 typedef struct crsf_sensor_battery_s
 {
-    unsigned voltage : 16;  // V * 10 big endian
-    unsigned current : 16;  // A * 10 big endian
-    unsigned capacity : 24; // mah big endian
-    unsigned remaining : 8; // %
+    uint32_t voltage : 16;  // V * 10 big endian
+    uint32_t current : 16;  // A * 10 big endian
+    uint32_t capacity : 24; // mah big endian
+    uint32_t remaining : 8; // %
 } PACKED crsf_sensor_battery_t;
 
 typedef struct crsf_sensor_gps_s

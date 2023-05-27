@@ -33,10 +33,15 @@
 CrsfSerial::CrsfSerial(HardwareSerial &port, uint32_t baud) :
     _port(port), _crc(0xd5), _baud(baud),
     _lastReceive(0), _lastChannelsPacket(0), _linkIsUp(false),
-    _passthroughMode(false)
+    _passthroughBaud(0)
+{}
+
+void CrsfSerial::begin(uint32_t baud)
 {
-    // Crsf serial is 420000 baud for V2
-    _port.begin(_baud);
+    if (baud != 0)
+        _port.begin(baud);
+    else
+        _port.begin(_baud);
 }
 
 // Call from main loop to update
@@ -52,10 +57,10 @@ void CrsfSerial::handleSerialIn()
         uint8_t b = _port.read();
         _lastReceive = millis();
 
-        if (_passthroughMode)
+        if (getPassthroughMode())
         {
-            if (onShiftyByte)
-                onShiftyByte(b);
+            if (onOobData)
+                onOobData(b);
             continue;
         }
 
@@ -82,8 +87,9 @@ void CrsfSerial::handleByteReceived()
         if (_rxBufPos > 1)
         {
             uint8_t len = _rxBuf[1];
-            // Sanity check the declared length, can't be shorter than Type, X, CRC
-            if (len < 3 || len > CRSF_MAX_PACKET_LEN)
+            // Sanity check the declared length isn't outside Type + X{1,CRSF_MAX_PAYLOAD_LEN} + CRC
+            // assumes there never will be a CRSF message that just has a type and no data (X)
+            if (len < 3 || len > (CRSF_MAX_PAYLOAD_LEN + 2))
             {
                 shiftRxBuffer(1);
                 reprocess = true;
@@ -157,8 +163,8 @@ void CrsfSerial::shiftRxBuffer(uint8_t cnt)
         return;
     }
 
-    if (cnt == 1 && onShiftyByte)
-        onShiftyByte(_rxBuf[0]);
+    if (cnt == 1 && onOobData)
+        onOobData(_rxBuf[0]);
 
     // Otherwise do the slow shift down
     uint8_t *src = &_rxBuf[cnt];
@@ -236,32 +242,62 @@ void CrsfSerial::write(const uint8_t *buf, size_t len)
 
 void CrsfSerial::queuePacket(uint8_t addr, uint8_t type, const void *payload, uint8_t len)
 {
-    if (!_linkIsUp)
+    if (getPassthroughMode())
         return;
-    if (_passthroughMode)
-        return;
-    if (len > CRSF_MAX_PACKET_LEN)
+    if (len > CRSF_MAX_PAYLOAD_LEN)
         return;
 
-    uint8_t buf[CRSF_MAX_PACKET_LEN+4];
+    uint8_t buf[CRSF_MAX_PACKET_SIZE];
     buf[0] = addr;
     buf[1] = len + 2; // type + payload + crc
     buf[2] = type;
     memcpy(&buf[3], payload, len);
     buf[len+3] = _crc.calc(&buf[2], len + 1);
 
-    // Busywait until the serial port seems free
-    //while (millis() - _lastReceive < 2)
-    //    loop();
     write(buf, len + 4);
 }
 
-void CrsfSerial::setPassthroughMode(bool val, unsigned int baud)
+/**
+ * @brief   Enter passthrough mode (serial sent directly to shiftybyte),
+ *          optionally changing the baud rate used during passthrough mode
+ * @param val
+ *          True to start passthrough mode, false to resume processing CRSF
+ * @param passthroughBaud
+ *          New baud rate for passthrough mode, or 0 to not change baud
+ *          Not used if disabling passthough
+*/
+void CrsfSerial::setPassthroughMode(bool val, uint32_t passthroughBaud)
 {
-    _passthroughMode = val;
-    _port.flush();
-    if (baud != 0)
-        _port.begin(baud);
+    if (val)
+    {
+        // If not requesting any baud change
+        if (passthroughBaud == 0)
+        {
+            // Enter passthrough mode if not yet
+            if (_passthroughBaud == 0)
+                _passthroughBaud = _baud;
+            return;
+        }
+
+        _passthroughBaud = passthroughBaud;
+    }
     else
-        _port.begin(_baud);
+    {
+        // Not in passthrough, can't leave it any harder than we already are
+        if (_passthroughBaud == 0)
+            return;
+
+        // Leaving passthrough, but going back to same baud, just disable
+        if (_passthroughBaud == _baud)
+        {
+            _passthroughBaud = 0;
+            return;
+        }
+
+        _passthroughBaud = 0;
+    }
+
+    // Can only get here if baud is changing, close and reopen the port
+    _port.end(); // assumes flush()
+    begin(_passthroughBaud);
 }
