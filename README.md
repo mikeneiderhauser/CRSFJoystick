@@ -1,4 +1,4 @@
-# CRSFJoystick
+# ELRSJoystick / CRSFJoystick
 Arduino code using the mbed core that runs on a Pi Pico (2040) to emulate a USB HID Joystick
 
 Pirmarily developed to use and ExpressLRS receiver and a HID Joystick for Sim use!
@@ -13,14 +13,15 @@ https://gitlab.com/realrobots/PicoGamepad/-/tree/master
 
 ## Purchase
 
-Hand built boards can be purchased from my page on FPVExchange
+Since FPVExchange is now down, please send me an email for availability, purchase, or to get additional info!
 
-- [HouseFPV on FPVExchange](https://fpvexchange.com/user/HouseFPV)
-- [Pi Pico Version](https://fpvexchange.com/bucket/elrs-usb-joystick-adapter-full-version-shipped?item=79bf6b52-0174-4896-9d9c-cdbf47ecb8dd) - Built to Order
-- [Tiny2040 Version](https://fpvexchange.com/bucket/elrs-usb-joystick-adapter-tiny-version-shipped?item=77c63fc5-9c1e-441b-a208-b0c28b785677) - Built to Order
-- WaveShare RP2040-Zero Version - Coming Soon!
-- SEEED AXIO RP2040 Version - Coming Soon!
-- BYORx Version - Coming Soon!
+<housefpv@gmail.com>
+
+You can also contact me on discord [HouseFPV](https://discordapp.com/users/HouseFPV#5899)
+
+- Blank carrier boards for Pi Pico, Tiny 2040, and Waveshare RP2040
+- Built and flashed units
+
 
 ## Compatability
 
@@ -84,7 +85,7 @@ On link up/down the onboard Pi Pico LED will light indicating connection
 | Pi Pico | https://www.pishop.us/product/raspberry-pi-pico/ | $4 (Approx $6 with shipping) |
 | Tiny 2040 (alt part) | https://www.pishop.us/product/tiny-2040/ | $10 (Approx $12 with shipping) |
 | ELRS RX (any will do) |  https://www.racedayquads.com/products/happymodel-2-4ghz-ep1-rx-express-lrs-receiver?_pos=1&_sid=c7214d987&_ss=r | $13.50 |
-| Level Shifter (Used for prototype boards) | https://www.amazon.com/dp/B07F7W91LC?psc=1&ref=ppx_yo2_dt_b_product_details | 10 for $7.50 ($0.75 ea) |
+| ~~Level Shifter (Used for prototype boards)~~ No longer needed | https://www.amazon.com/dp/B07F7W91LC?psc=1&ref=ppx_yo2_dt_b_product_details | 10 for $7.50 ($0.75 ea) |
 
 Approx part cost for pico hardware (large footprint, cheaper) - $20-$25
 
@@ -104,6 +105,10 @@ Approx part cost for tiny2040 hardware (much smaller footprint) - $25-$30
 
 # Carrier Boards (Tiny Version)
 
+> **_NOTE:_** References to level shifters below are no longer needed as the level shifter can be omitted. You will have to bridge the pads on the level shifter for the TX/RX pins or use a newer version of the carrier board.
+
+I personally use the Waveshare RP2040-Zero version for my ELRS Joystick!
+
 Hardware build files are located in hardware/kicad/CRSFJoystick/output/Rev1.0
 
 I used JLCPCB with Black Soldermask and a board thickness of 1.6mm.
@@ -112,26 +117,33 @@ I used JLCPCB with Black Soldermask and a board thickness of 1.6mm.
 
 Note the different orientation of the ELRS RX's.  The orientation can be flipped.  I installed each RX to ensure the boot pad is exposed should the RX need recovered.
 
-## Tiny2040
+## Waveshare RP2040-Zero
 
-![Tiny2040 Level shifter orientation](./photos/tiny/2040_level_shifter.jpg)
+[WaveShare RP2040-Zero Board](https://www.waveshare.com/rp2040-zero.htm)
 
-![Tiny2040 Build Front](./photos/tiny/board_r1.0_front.jpeg)
+![WaveShare RP2040-Zero BoardDimensions](./photos/waveshare/board_kicad_dimensions.png)
 
-![Tiny2040 Build Back](./photos/tiny/board_r1.0_back.jpeg)
+![WaveShare RP2040 Case lower](./photos/waveshare/WS2040_lower.jpg)
 
-![Tiny2040 Dimensions](./photos/tiny/board_kicad_dimensions.png)
+![WaveShare RP2040 Case Upper](./photos/waveshare/WS2040_upper.jpg)
 
+![WaveShare RP2040 Case assembled](./photos/waveshare/WS2040_case.jpg)
 
 ## Raspberry Pi Pico (Full Version)
-
-![Pico level shifter orientation](./photos/pico/Pico_level_shifter.jpg)
 
 ![Pico Build Front](./photos/pico/board_r1.0_front.jpeg)
 
 ![Pico Build Back](./photos/pico/board_r1.0_back.jpeg)
 
 ![Pi Pico Dimensions](./photos/pico/board_kicad_dimensions.png)
+
+## Tiny2040
+
+![Tiny2040 Build Front](./photos/tiny/board_r1.0_front.jpeg)
+
+![Tiny2040 Build Back](./photos/tiny/board_r1.0_back.jpeg)
+
+![Tiny2040 Dimensions](./photos/tiny/board_kicad_dimensions.png)
 
 ## SEEED AXIO 2040
 
@@ -140,20 +152,6 @@ Board files now in the hardware folder.  Not built or tested but should work.
 ![SEEED XAIO RP2040 Dimensions](./photos/xiao/board_kicad_dimensions.png)
 
 [SEEED XAIO RP2040 Board](https://www.seeedstudio.com/XIAO-RP2040-v1-0-p-5026.html)
-
-## Waveshare RP2040-Zero
-
-First batch on order!
-
-![WaveShare RP2040-Zero BoardDimensions](./photos/waveshare/board_kicad_dimensions.png)
-
-![WaveShare RP2040-Zero Board](https://www.waveshare.com/rp2040-zero.htm)
-
-![WaveShare RP2040 Case lower](./photos/waveshare/WS2040_lower.jpg)
-
-![WaveShare RP2040 Case Upper](./photos/waveshare/WS2040_upper.jpg)
-
-![WaveShare RP2040 Case assembled](./photos/waveshare/WS2040_case.jpg)
 
 
 ## CRSFJoystick2.0
@@ -176,11 +174,8 @@ Build a smaller pico by yourself.
 
 # Future Plans
 
-- Convert from Arduino IDE to platform.io
+- Convert from Arduino IDE to platform.io (or possibly QMK for more robust HID configuration)
 - Add failsafe nopulses / hold
-- Add cases for SEEED XAIO RP2040 Board
-- Add cases for Waveshare RP2040-Zero Board
-- FPVExchange Links for BYORx versions
 
 # Demo Video
 [![ELRS HID Joystick Demo](https://img.youtube.com/vi/MCOWKvFTHRc/0.jpg)](https://www.youtube.com/watch?v=MCOWKvFTHRc)
