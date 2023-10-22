@@ -1,7 +1,12 @@
 # ELRSJoystick / CRSFJoystick
+
+<https://github.com/mikeneiderhauser/CRSFJoystick>
+
+Named CRSFJoystick as it indicates the wire protocol between the microcontroller (pi pico) and receiver).
+
 Arduino code using the mbed core that runs on a Pi Pico (2040) to emulate a USB HID Joystick
 
-Pirmarily developed to use and ExpressLRS receiver and a HID Joystick for Sim use!
+Pirmarily developed to use and ExpressLRS receiver and a HID Joystick for Sim use! It will work with both Tracer and Crossfire as well.
 
 Shout out to CapnBry for the Crsf Library
 
@@ -11,16 +16,37 @@ Shout out to RealRobots.net for the Gamepad Library
 
 https://gitlab.com/realrobots/PicoGamepad/-/tree/master
 
+# Future Plans
+
+- GitHub Builds
+- Rework HID USB code
+- Add failsafe nopulses / hold
+
+# Demo Video
+[![ELRS HID Joystick Demo](https://img.youtube.com/vi/MCOWKvFTHRc/0.jpg)](https://www.youtube.com/watch?v=MCOWKvFTHRc)
+
 ## Purchase
 
-Since FPVExchange is now down, please send me an email for availability, purchase, or to get additional info!
+Originally offered of FPVExchange, but that is no longer an option. Please send me an email for availability, purchase, or to get additional info!
 
 <housefpv@gmail.com>
 
 You can also contact me on discord [HouseFPV](https://discordapp.com/users/HouseFPV#5899)
 
-- Blank carrier boards for Pi Pico, Tiny 2040, and Waveshare RP2040
+- Blank carrier boards for Pi Pico, Tiny 2040, and Waveshare RP2040 (old stock)
 - Built and flashed units
+- [DIY Section](#diy-hardware)
+
+A few boards that I believe are based off of this project:
+- HGLRC Dongle (I have samples from HGLRC on the way)
+  - [HGLRC Dongle at HGLRC](https://www.hglrc.com/collections/new-arrivals/products/hglrc-c1-remote-control)
+  - [HGLRC C1 Radio Kit with dongle at HGLRC](https://www.hglrc.com/collections/new-arrivals/products/hglrc-c1-remote-control)
+  - [HGLRC C1 Radio Kit with dongle at RacedayQuads](https://www.racedayquads.com/products/hglrc-c1-transmitter-elrs-2-4ghz-choose-your-version?keyword=hglrc%20c1)
+- Squid Stick (I have personally not tested one)
+  -  [Squid Stick at Progressiverc.com](https://www.progressiverc.com/products/squid-stick-elrs-2-4ghz-usb-receiver-module)
+  -  Squid Stick at RacedayQuads - Link to be posted when available
+- YMZFPV Simulator Adapter (have not yet been able to confirm that this is based off of this project)
+  - [YMZFPV Sim Adapter at RacedayQuads](https://www.racedayquads.com/products/ymzfpv-wireless-simulator-adapter-for-sbus-pwm-csfr-choose-your-version?keyword=simulator)
 
 
 ## Compatability
@@ -29,26 +55,90 @@ This project was designed primarily with ELRS usage in mind, however this code b
 
 I no longer have TBS Crossfire nor TBS Tracer TX modules or Receivers so future tests will have to be conducted by others.
 
+### ExpressLRS (Waveshare RP2040)
+<img src="./photos/waveshare/WS2040_r_1_1.jpg" width="400" height="400">
+
 ### Crossfire
 
-![Crossfire](./photos/tbs/crossfire_dev_board.jpeg)
+<img src="./photos/tbs/crossfire_dev_board.jpeg" width="400" height="400">
 
 ### Tracer
+<img src="./photos/tbs/tracer_dev_board.jpeg" width="400" height="400">
 
-![Tracer](./photos/tbs/tracer_dev_board.jpeg)
+# Building / Flashing
 
-# Usage
-Tested with arduino-1.8.19.
+I recently converted the projet to PlatformIO to aid in building, board management, etc.  PlatformIO has some known quirks with PiPico boards and I'm going to leave some breadcrumbs here for later.
 
-Go to Boards manager and install 'Arduino Mbed OS RP2040 Boards' package.  I'm using version 2.6.1 currently.
+## VSCode with PlatformIO
 
-Update the arduino ide preferences to point to the Sketchbook folder contained by this repo.  Libraries and examples are already included.
+### Installing VSCode and PlatformIO
+<https://platformio.org/install/ide?install=vscode>
 
-Compile and upload. 
+### Build for specific board / environment
 
-On first upload to the pico, you will need to hold in the bootsel buttion before plugging it into the computer.  This should only have to be done once and subsequent uppdates can be done automatically by the ide.
+At the Bottom of VSCode you will see a tool bar.  Look for `Default (CRSFJoystick)`.  Building in this state will build for all boards / environments defined in the `platformio.ini` file.  To target a sepecific board, Click on `Default (CRSFJoystick)` and select an appropriate option (Note, selection pops up at the top of vscode).
 
-Once uploaded, the device should be recgonzed by your computer as a HID Joystick.
+<img src="./photos/screenshots/stock_bottom_bar.png">
+
+Click on the Checkmark on the bottom toolbar to build for the board / environment you selected.
+
+Click on the `->` on the bottom toolbar to upload to the board.  If upload fails to find your board, please see bothe the [alternative upload](#alternative-upload) section as well as the driver section.
+
+## Alternative upload
+This is one of the standard advertised methods for uploading firmware to a pipico based microcontroller board.
+
+Press and hold the bootsel button on your board and either plugin/power on the board or if the board is already powered press and release the reset button.
+
+This will put the board in RP2 Boot mode.
+
+A removable device should pop up or become available on your computer.  Drag and drop the `firmware.u2f` file from the `.pio/build/wavesharerp2040zero/` directory into this device on your computer.  Note replpace wavesharerp2040zero with the environment for your board.
+
+## Drivers
+Drivers can be hit or miss for the pipico board and platformio.  
+
+You may need to use zadig to get vscode+platforio to be able to upload directly to the board.
+<https://github.com/platformio/platform-raspberrypi/issues/2#issuecomment-828586398>
+
+Below are the drivers I have working on my Windows 11 machine.  You may need to modify the driver selection via zadig and or device manager to get it working.
+
+- Standard Running Mode
+  - RaspberryPi Pico (Interface 0)
+    - Zadig -> HidUsb v10.0.22621.819
+    - Device Manager -> Human Interface Devices -> HID-compliant game controller
+  - RaspberryPi Pico (Interface 1)
+      - Zadig -> usbser v10.0.22621.1778
+      - Device Manager -> Ports (COM & LPT) -> USB Serial Device
+- RP2 Boot mode
+  - RP2 Boot (Interface 0) 
+    - Zadig USBSTOR v10.0.022621.1778 
+    - Device Manager -> Disk Drives -> RPI RP2 USB Device 
+  - RP2 Boot (Interface 1)
+    - Zadig WinUSB v6.1.7600.16385
+    Device Manager -> Universal Serial Bus Devices -> RP2 Boot
+
+### Device manager clicks to change driver 
+Right Click -> Properties -> Update Driver -> Browse my computer for drivers -> Let me pick from a list of available drivers on my computer
+
+# Flashing ELRS Receiver
+
+Depending on the device you are using, your target may be different.  For all of the DIY version's I've made, I used the HappyModel EP2 Rx.  Other vendors may vary.
+
+## Flashing via Betaflight Passthrough
+<https://www.expresslrs.org/software/updating/betaflight-passthrough/>
+
+## Flashing via Wifi
+If your receiver is wifi enabled you can also flash it via wifi
+
+<https://www.expresslrs.org/software/updating/wifi-updating/>
+
+
+# Testing
+For a quick test of functionality, I typically go to [GamepadTester](https://hardwaretester.com/gamepad).
+
+Once the Radio is bound to the RX, it should show up in GamePadTester.
+
+<img src="./photos/screenshots/gamepadtester.png">
+
 
 # Mappings
 This was a quick map and is not fully featured.
@@ -78,28 +168,25 @@ On link up/down the onboard Pi Pico LED will light indicating connection
 
 *Note additional button mappings can be created in caliration.h*
 
-# Hardware
+
+# Here below is for DIY Builds and may be slightly outdated
+# DIY Hardware
+
+In a nutshell, wire the ELRS RX up to a uart on the pipico, 5v, and gnd.
 
 | Part  | Link | Approx Cost |
 | ----- | ---- | ------------|
 | Pi Pico | https://www.pishop.us/product/raspberry-pi-pico/ | $4 (Approx $6 with shipping) |
+| Waveshare RP2040 zero | https://www.amazon.com/RP2040-Zero-Development-Microcontroller-Multi-Function-Integration/dp/B09SBCKYSC/ref=sr_1_1_sspa?crid=1NDXW0KFV39DX&keywords=waveshare+rp2040+zero&qid=1697989796&sprefix=waveshare+rp2040+zero%2Caps%2C66&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1| $10|
 | Tiny 2040 (alt part) | https://www.pishop.us/product/tiny-2040/ | $10 (Approx $12 with shipping) |
-| ELRS RX (any will do) |  https://www.racedayquads.com/products/happymodel-2-4ghz-ep1-rx-express-lrs-receiver?_pos=1&_sid=c7214d987&_ss=r | $13.50 |
-| ~~Level Shifter (Used for prototype boards)~~ No longer needed | https://www.amazon.com/dp/B07F7W91LC?psc=1&ref=ppx_yo2_dt_b_product_details | 10 for $7.50 ($0.75 ea) |
+| ELRS RX (any will do) |  https://www.racedayquads.com/products/happymodel-2-4ghz-ep2-tcxo-rx-express-lrs-receiver?keyword=expresslrs | $18 |
+
+Note, price breaks can be had when purchasing at quantity.
 
 Approx part cost for pico hardware (large footprint, cheaper) - $20-$25
 
 - Pi Pico - $4.00
 - ELRS RX - $13.50 
-- Level Shifter - $0.75
-- Carrier Board - $1.00 (approx)
-- Shipping / Tax from vendors - varies
-
-Approx part cost for tiny2040 hardware (much smaller footprint) - $25-$30
-
-- Tiny2040 - $10.00
-- ELRS RX - $13.50 
-- Level Shifter - $0.75
 - Carrier Board - $1.00 (approx)
 - Shipping / Tax from vendors - varies
 
@@ -171,11 +258,3 @@ Build a smaller pico by yourself.
 - Print the top and bottom enclosure
 - Print 2 of the spacers for the Pi2040, Print 4 of the spacers for the Pi Pico version
 - Follow the directions in this video https://youtu.be/Zuhfbobgm5A
-
-# Future Plans
-
-- Convert from Arduino IDE to platform.io (or possibly QMK for more robust HID configuration)
-- Add failsafe nopulses / hold
-
-# Demo Video
-[![ELRS HID Joystick Demo](https://img.youtube.com/vi/MCOWKvFTHRc/0.jpg)](https://www.youtube.com/watch?v=MCOWKvFTHRc)
