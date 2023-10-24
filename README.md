@@ -56,14 +56,14 @@ This project was designed primarily with ELRS usage in mind, however this code b
 I no longer have TBS Crossfire nor TBS Tracer TX modules or Receivers so future tests will have to be conducted by others.
 
 ### ExpressLRS (Waveshare RP2040)
-<img src="./Photos/waveshare/WS2040_r_1_1.jpg" width="400" height="400">
+<img src="./photos/waveshare/WS2040_r_1_1.jpg" width="400" height="400">
 
 ### Crossfire
 
-<img src="./Photos/tbs/crossfire_dev_board.jpeg" width="400" height="400">
+<img src="./photos/tbs/crossfire_dev_board.jpeg" width="400" height="400">
 
 ### Tracer
-<img src="./Photos/tbs/tracer_dev_board.jpeg" width="400" height="400">
+<img src="./photos/tbs/tracer_dev_board.jpeg" width="400" height="400">
 
 # Building / Flashing
 
@@ -78,7 +78,7 @@ I recently converted the projet to PlatformIO to aid in building, board manageme
 
 At the Bottom of VSCode you will see a tool bar.  Look for `Default (CRSFJoystick)`.  Building in this state will build for all boards / environments defined in the `platformio.ini` file.  To target a sepecific board, Click on `Default (CRSFJoystick)` and select an appropriate option (Note, selection pops up at the top of vscode).
 
-<img src="./Photos/screenshots/stock_bottom_bar.png">
+<img src="./photos/screenshots/stock_bottom_bar.png">
 
 Click on the Checkmark on the bottom toolbar to build for the board / environment you selected.
 
@@ -137,7 +137,7 @@ For a quick test of functionality, I typically go to [GamepadTester](https://har
 
 Once the Radio is bound to the RX, it should show up in GamePadTester.
 
-<img src="./Photos/screenshots/gamepadtester.png">
+<img src="./photos/screenshots/gamepadtester.png">
 
 
 # Mappings
@@ -196,13 +196,13 @@ Approx part cost for pico hardware (large footprint, cheaper) - $20-$25
 
 This board has an ELRS RX built in, so you don't need to wire any RX on, just plug in and connect to your ELRS TX, then you are ready to go!
 
-![](./Photos/ELRSJoystick/1.png)
-![](./Photos/ELRSJoystick/2.png)
-![](./Photos/ELRSJoystick/3.png)
-![](./Photos/ELRSJoystick/4.png)
-![](./Photos/ELRSJoystick/5.png)
-![](./Photos/ELRSJoystick/6.png)
-![](./Photos/ELRSJoystick/7.png)
+![](./photos/ELRSJoystick/1.png)
+![](./photos/ELRSJoystick/2.png)
+![](./photos/ELRSJoystick/3.png)
+![](./photos/ELRSJoystick/4.png)
+![](./photos/ELRSJoystick/5.png)
+![](./photos/ELRSJoystick/6.png)
+![](./photos/ELRSJoystick/7.png)
 
 ## Tiny Version
 
@@ -214,7 +214,7 @@ Hardware build files are located in hardware/kicad/CRSFJoystick/output/Rev1.0
 
 I used JLCPCB with Black Soldermask and a board thickness of 1.6mm.
 
-![R1.0 Build Photo](./Photos/r1.0_build.jpeg)
+![R1.0 Build Photo](./photos/r1.0_build.jpeg)
 
 Note the different orientation of the ELRS RX's.  The orientation can be flipped.  I installed each RX to ensure the boot pad is exposed should the RX need recovered.
 
@@ -222,35 +222,35 @@ Note the different orientation of the ELRS RX's.  The orientation can be flipped
 
 [WaveShare RP2040-Zero Board](https://www.waveshare.com/rp2040-zero.htm)
 
-![WaveShare RP2040-Zero BoardDimensions](./Photos/waveshare/board_kicad_dimensions.png)
+![WaveShare RP2040-Zero BoardDimensions](./photos/waveshare/board_kicad_dimensions.png)
 
-![WaveShare RP2040 Case lower](./Photos/waveshare/WS2040_lower.jpg)
+![WaveShare RP2040 Case lower](./photos/waveshare/WS2040_lower.jpg)
 
-![WaveShare RP2040 Case Upper](./Photos/waveshare/WS2040_upper.jpg)
+![WaveShare RP2040 Case Upper](./photos/waveshare/WS2040_upper.jpg)
 
-![WaveShare RP2040 Case assembled](./Photos/waveshare/WS2040_case.jpg)
+![WaveShare RP2040 Case assembled](./photos/waveshare/WS2040_case.jpg)
 
 ## Raspberry Pi Pico (Full Version)
 
-![Pico Build Front](./Photos/pico/board_r1.0_front.jpeg)
+![Pico Build Front](./photos/pico/board_r1.0_front.jpeg)
 
-![Pico Build Back](./Photos/pico/board_r1.0_back.jpeg)
+![Pico Build Back](./photos/pico/board_r1.0_back.jpeg)
 
-![Pi Pico Dimensions](./Photos/pico/board_kicad_dimensions.png)
+![Pi Pico Dimensions](./photos/pico/board_kicad_dimensions.png)
 
 ## Tiny2040
 
-![Tiny2040 Build Front](./Photos/tiny/board_r1.0_front.jpeg)
+![Tiny2040 Build Front](./photos/tiny/board_r1.0_front.jpeg)
 
-![Tiny2040 Build Back](./Photos/tiny/board_r1.0_back.jpeg)
+![Tiny2040 Build Back](./photos/tiny/board_r1.0_back.jpeg)
 
-![Tiny2040 Dimensions](./Photos/tiny/board_kicad_dimensions.png)
+![Tiny2040 Dimensions](./photos/tiny/board_kicad_dimensions.png)
 
 ## SEEED AXIO 2040
 
 Board files now in the hardware folder.  Not built or tested but should work.
 
-![SEEED XAIO RP2040 Dimensions](./Photos/xiao/board_kicad_dimensions.png)
+![SEEED XAIO RP2040 Dimensions](./photos/xiao/board_kicad_dimensions.png)
 
 [SEEED XAIO RP2040 Board](https://www.seeedstudio.com/XIAO-RP2040-v1-0-p-5026.html)
 
@@ -259,17 +259,17 @@ Board files now in the hardware folder.  Not built or tested but should work.
 
 Build a smaller pico by yourself.
 
-![CRSFJoystick2.3 Board Front](./Photos/CRSFJoystick2.0/board_v2.3_front.JPG)
-![CRSFJoystick2.3 Board Back](./Photos/CRSFJoystick2.0/board_v2.3_back.JPG)
-![CRSFJoystick2.3 Render Front](./Photos/CRSFJoystick2.0/board_v2.3_render_front.png)
-![CRSFJoystick2.3 Render Back](./Photos/CRSFJoystick2.0/board_v2.3_render_back.png)
-![CRSFJoystick2.3 Render Back](./Photos/CRSFJoystick2.0/1.png)
-![CRSFJoystick2.3 Render Back](./Photos/CRSFJoystick2.0/2.png)
-![CRSFJoystick2.3 Render Back](./Photos/CRSFJoystick2.0/3.png)
-![CRSFJoystick2.3 Render Back](./Photos/CRSFJoystick2.0/4.png)
-![CRSFJoystick2.3 Render Back](./Photos/CRSFJoystick2.0/5.png)
-![CRSFJoystick2.3 Render Back](./Photos/CRSFJoystick2.0/6.png)
-![CRSFJoystick2.3 Render Back](./Photos/CRSFJoystick2.0/7.png)
+![CRSFJoystick2.3 Board Front](./photos/CRSFJoystick2.0/board_v2.3_front.JPG)
+![CRSFJoystick2.3 Board Back](./photos/CRSFJoystick2.0/board_v2.3_back.JPG)
+![CRSFJoystick2.3 Render Front](./photos/CRSFJoystick2.0/board_v2.3_render_front.png)
+![CRSFJoystick2.3 Render Back](./photos/CRSFJoystick2.0/board_v2.3_render_back.png)
+![CRSFJoystick2.3 Render Back](./photos/CRSFJoystick2.0/1.png)
+![CRSFJoystick2.3 Render Back](./photos/CRSFJoystick2.0/2.png)
+![CRSFJoystick2.3 Render Back](./photos/CRSFJoystick2.0/3.png)
+![CRSFJoystick2.3 Render Back](./photos/CRSFJoystick2.0/4.png)
+![CRSFJoystick2.3 Render Back](./photos/CRSFJoystick2.0/5.png)
+![CRSFJoystick2.3 Render Back](./photos/CRSFJoystick2.0/6.png)
+![CRSFJoystick2.3 Render Back](./photos/CRSFJoystick2.0/7.png)
 
 # General Assembly
 
