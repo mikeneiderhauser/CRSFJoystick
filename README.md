@@ -190,7 +190,21 @@ Approx part cost for pico hardware (large footprint, cheaper) - $20-$25
 - Carrier Board - $1.00 (approx)
 - Shipping / Tax from vendors - varies
 
-# Carrier Boards (Tiny Version)
+# Carrier Boards
+
+## ELRSJoystick
+
+This board has an ELRS RX built in, so you don't need to wire any RX on, just plug in and connect to your ELRS TX, then you are ready to go!
+
+![](./photos/ELRSJoystick/1.png)
+![](./photos/ELRSJoystick/2.png)
+![](./photos/ELRSJoystick/3.png)
+![](./photos/ELRSJoystick/4.png)
+![](./photos/ELRSJoystick/5.png)
+![](./photos/ELRSJoystick/6.png)
+![](./photos/ELRSJoystick/7.png)
+
+## Tiny Version
 
 > **_NOTE:_** References to level shifters below are no longer needed as the level shifter can be omitted. You will have to bridge the pads on the level shifter for the TX/RX pins or use a newer version of the carrier board.
 
@@ -245,13 +259,17 @@ Board files now in the hardware folder.  Not built or tested but should work.
 
 Build a smaller pico by yourself.
 
-![CRSFJoystick2.3 Board Front](./photos/crsfjoystick2.0/board_v2.3_front.JPG)
-
-![CRSFJoystick2.3 Board Back](./photos/crsfjoystick2.0/board_v2.3_back.JPG)
-
-![CRSFJoystick2.3 Render Front](./photos/crsfjoystick2.0/board_v2.3_render_front.png)
-
-![CRSFJoystick2.3 Render Back](./photos/crsfjoystick2.0/board_v2.3_render_back.png)
+![CRSFJoystick2.3 Board Front](./photos/CRSFJoystick2.0/board_v2.3_front.JPG)
+![CRSFJoystick2.3 Board Back](./photos/CRSFJoystick2.0/board_v2.3_back.JPG)
+![CRSFJoystick2.3 Render Front](./photos/CRSFJoystick2.0/board_v2.3_render_front.png)
+![CRSFJoystick2.3 Render Back](./photos/CRSFJoystick2.0/board_v2.3_render_back.png)
+![CRSFJoystick2.3 Render Back](./photos/CRSFJoystick2.0/1.png)
+![CRSFJoystick2.3 Render Back](./photos/CRSFJoystick2.0/2.png)
+![CRSFJoystick2.3 Render Back](./photos/CRSFJoystick2.0/3.png)
+![CRSFJoystick2.3 Render Back](./photos/CRSFJoystick2.0/4.png)
+![CRSFJoystick2.3 Render Back](./photos/CRSFJoystick2.0/5.png)
+![CRSFJoystick2.3 Render Back](./photos/CRSFJoystick2.0/6.png)
+![CRSFJoystick2.3 Render Back](./photos/CRSFJoystick2.0/7.png)
 
 # General Assembly
 
