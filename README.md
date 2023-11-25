@@ -174,6 +174,15 @@ On link up/down the onboard Pi Pico LED will light indicating connection
 
 In a nutshell, wire the ELRS RX up to a uart on the pipico, 5v, and gnd.
 
+| Raspberry Pico | ELRS/CRSF Receiver |
+| -------------- | ------------------ |
+| VBUS (PIN 40)  | 5V                 |
+| GND  (PIN 38)  | GND
+| GP4  (PIN 6)   | RX                 |
+| GP5  (PIN 7)   | TX                 |
+
+Other boards are supported, see the [board_defs.h](./include/board_defs.h) file.
+
 | Part  | Link | Approx Cost |
 | ----- | ---- | ------------|
 | Pi Pico | https://www.pishop.us/product/raspberry-pi-pico/ | $4 (Approx $6 with shipping) |
