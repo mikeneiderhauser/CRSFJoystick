@@ -39,7 +39,7 @@ btn_config *c;
 void packetChannels()
 {
     // Manually expanding instead of looping so I can change params as needed
-    
+
     // X - Channel 1 - A
     channel_data = crsf.getChannel(1);
     map_data = map(channel_data, \
@@ -48,7 +48,7 @@ void packetChannels()
       JOYSTICK_LOW,              \
       JOYSTICK_HIGH);
     gamepad.SetX(map_data);
-    
+
     // Y - Channel 2 - E
     channel_data = crsf.getChannel(2);
     map_data = map(channel_data, \
@@ -57,7 +57,7 @@ void packetChannels()
       JOYSTICK_LOW,              \
       JOYSTICK_HIGH);
     gamepad.SetY(map_data);
-    
+
     // Rx - Channel 3 - T
     channel_data = crsf.getChannel(3);
     map_data = map(channel_data, \
@@ -66,7 +66,7 @@ void packetChannels()
       JOYSTICK_LOW,              \
       JOYSTICK_HIGH);
     gamepad.SetRx(map_data);
-    
+
     // Ry - Channel 4 - R
     channel_data = crsf.getChannel(4);
     map_data = map(channel_data, \
@@ -93,7 +93,7 @@ void packetChannels()
       JOYSTICK_LOW,              \
       JOYSTICK_HIGH);
     gamepad.SetRz(map_data);
-    
+
     // Rx - Channel 7
     channel_data = crsf.getChannel(7);
     map_data = map(channel_data, \
@@ -138,13 +138,13 @@ void packetChannels()
 
       #ifdef BTN_PRINT
       Serial.print("b: "); Serial.print(c->id));
-      Serial.print(" c: "); Serial.print(channel_data); 
+      Serial.print(" c: "); Serial.print(channel_data);
       Serial.print(" m: "); Serial.println(map_data);
       #endif
     }
     // TODO what to do with Channel 13,14,15,16 (NA,NA,LQ,RSSI)
 
-    // Set hat direction, 4 hats available. direction is clockwise 0=N 1=NE 2=E 3=SE 4=S 5=SW 6=W 7=NW 8=CENTER 
+    // Set hat direction, 4 hats available. direction is clockwise 0=N 1=NE 2=E 3=SE 4=S 5=SW 6=W 7=NW 8=CENTER
     // gamepad.SetHat(0, 8);
 
     gamepad.send_update();
@@ -174,7 +174,7 @@ static void passthroughBegin(uint32_t baud)
         crsf.queuePacket(CRSF_ADDRESS_CRSF_RECEIVER, CRSF_FRAMETYPE_COMMAND, &rebootpayload, sizeof(rebootpayload));
     }
     crsf.setPassthroughMode(true, baud);
-    
+
     serialEcho = false;
 }
 
@@ -249,6 +249,12 @@ static void checkSerialInNormal()
                 if (goToPassthrough)
                     return;
             }
+        }
+        // Betaflight CLI is entered just by hitting #, no return needed
+        else if (c == '#')
+        {
+            serialInBuffLen = 0;
+            handleSerialCommand("#");
         }
         else
         {
