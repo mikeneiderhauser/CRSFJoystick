@@ -63,26 +63,23 @@
     #define LED_TYPE LED_TYPE_NEOPIXEL
     #define LED_PIN 16
 
-    #include <Adafruit_NeoPixel.h>
-    Adafruit_NeoPixel pixels(1, LED_PIN, NEO_GRB + NEO_KHZ800);
+    #include <NeoPixelConnect.h>
+    NeoPixelConnect p(LED_PIN, 1, pio0, 0);
     
     void boardSetup() {
       // noop
     }
 
     void led_off() {
-      pixels.setPixelColor(0, pixels.Color(0,0,0));
-      pixels.show();
+        p.neoPixelFill(0, 0, 0, true);
     }
     
     void led_on() {
-      pixels.setPixelColor(0, pixels.Color(0,0,255));
-      pixels.show();
+        p.neoPixelFill(0, 0, 255, true);
     }
 
     void led_color(uint8_t r, uint8_t g, uint8_t b) {
-      pixels.setPixelColor(0, pixels.Color(r,g,b));
-      pixels.show();
+        p.neoPixelFill(r, g, b, true);
     }
 #endif
 
@@ -96,8 +93,8 @@
     #define LED_NEO_PWR 11
     #define LED_PIN 12
 
-    #include <Adafruit_NeoPixel.h>
-    Adafruit_NeoPixel pixels(1, LED_PIN, NEO_GRB + NEO_KHZ800);
+    #include <NeoPixelConnect.h>
+    NeoPixelConnect p(LED_PIN, 1, pio0, 0);
     
     // 1 Active Low RGB
     //#define LED_ACTIVE_LOW LED_ACTIVE_LOW_TRUE
@@ -120,14 +117,16 @@
     }
 
     void led_off() {
-      pixels.setPixelColor(0, pixels.Color(0,0,0));
-      pixels.show();
+        p.neoPixelFill(0, 0, 0, true);
     }
     
     void led_on() {
-      pixels.setPixelColor(0, pixels.Color(0,0,255));
-      pixels.show();
-    }    
+        p.neoPixelFill(0, 0, 255, true);
+    }
+
+    void led_color(uint8_t r, uint8_t g, uint8_t b) {
+        p.neoPixelFill(r, g, b, true);
+    }
 #endif
 
 // Adafruit QT Py RP2040
@@ -140,8 +139,8 @@
     #define LED_NEO_PWR 11
     #define LED_PIN 12
 
-    #include <Adafruit_NeoPixel.h>
-    Adafruit_NeoPixel pixels(1, LED_PIN, NEO_GRB + NEO_KHZ800);
+    #include <NeoPixelConnect.h>
+    NeoPixelConnect p(LED_PIN, 1, pio0, 0);
 
     void boardSetup() {
         pinMode(LED_NEO_PWR, OUTPUT);
@@ -149,13 +148,15 @@
     }
 
     void led_off() {
-      pixels.setPixelColor(0, pixels.Color(0,0,0));
-      pixels.show();
+        p.neoPixelFill(0, 0, 0, true);
     }
     
     void led_on() {
-      pixels.setPixelColor(0, pixels.Color(0,0,255));
-      pixels.show();
+        p.neoPixelFill(0, 0, 255, true);
+    }
+
+    void led_color(uint8_t r, uint8_t g, uint8_t b) {
+        p.neoPixelFill(r, g, b, true);
     }
 #endif
 
